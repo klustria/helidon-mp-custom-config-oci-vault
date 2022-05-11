@@ -1,0 +1,15 @@
+server:
+  port: 8080
+javax:
+  sql:
+    DataSource:
+      slDataSource:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        dataSource:
+          url: jdbc:h2:mem:slPU
+          user: sa
+          password: original_password
+oci:
+  secret:
+    # Replace this with your Datasource password Secret OCID
+    id: ocid1.vaultsecret.oc1.iad.datasourcepassword

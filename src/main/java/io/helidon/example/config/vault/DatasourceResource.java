@@ -62,7 +62,7 @@ public class DatasourceResource {
                 .add(DATASOURCE_CLASS_NAME, datasourceClassName)
                 .add(DATASOURCE_URL, datasourceUrl)
                 .add(DATASOURCE_USER, datasourceUser)
-                .add(DATASOURCE_URL, datasourcePassword)
+                .add(DATASOURCE_PASSWORD, datasourcePassword)
                 .build();
     }
 }

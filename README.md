@@ -48,5 +48,7 @@ java -jar target/helidon-config-vault.jar
 
 ```
 curl http://localhost:8080/datasource
-{"javax.sql.DataSource.slDataSource.dataSourceClassName":"org.h2.jdbcx.JdbcDataSource","javax.sql.DataSource.slDataSource.dataSource.url":"Password123!","javax.sql.DataSource.slDataSource.dataSource.user":"sa"}
+{"javax.sql.DataSource.slDataSource.dataSourceClassName":"org.h2.jdbcx.JdbcDataSource","javax.sql.DataSource.slDataSource.dataSource.url":"jdbc:h2:mem:slPU","javax.sql.DataSource.slDataSource.dataSource.user":"sa","javax.sql.DataSource.slDataSource.dataSource.password":"Password123!"}
 ```
+Ensure that the response contain the correct password value in `javax.sql.DataSource.slDataSource.dataSource.password` and is exactly
+what was created in the Oci Vault/Secret.

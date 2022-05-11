@@ -4,22 +4,24 @@ This is a simple Helidon MP project that retrieves datasource configuration para
 for the password which is fetched from the Oci Vault/Secret. The Oci Vault/Secret data fetching is performed using 
 Custom Config Source in [CustomOciSecretConfigSource.java](src/main/java/io/helidon/example/config/vault/CustomOciSecretConfigSource.java).
 This is registered as a service via [src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource](src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource).
-The rest of the parameters will be retrieved from the regular Config Source which in this case will be data coming from  
+The rest of the parameters will be retrieved from the default Config Source which in this case will be data coming from  
 [src/main/resources/application.yaml](src/main/resources/application.yaml).
 
-The custom config source will use the Oci SDK for Vault/Secrets to retrieve the target data which in this case is the
-password. The parameters for the Oci SDK invocation will be retrieved from the same 
+The custom config source will use the Oci SDK for Vault/Secrets to retrieve the encrypted target data which in this 
+sample application is the datasource password. The parameters for the Oci SDK invocation will be retrieved from the same 
 [src/main/resources/application.yaml](src/main/resources/application.yaml). To disable custom config source, you can either delete 
 [CustomOciSecretConfigSource.java](src/main/java/io/helidon/example/config/vault/CustomOciSecretConfigSource.java)
 or [src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource](src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource).
-Without the custom config source, the application will go back to retrieving the password from the default config source, i.e. 
+Without the custom config source, the application will go back to retrieving the password from the default config source, i.e. from the 
 [application.yaml](src/main/resources/application.yaml).
 
 
 ## Prerequisites
 
 1. OCI Vault Key and Secrets need to be created. There is a good example guide for this in  [Protect Your Sensitive Data With Secrets In The Oracle Cloud](https://recursive.codes/p/protect-your-sensitive-data-with-secrets-in-the-oracle-cloud). 
-   Once created, get the Secret Ocid of the Datsource source password and use that as the value of oci.secret.id in application.yaml.
+   Once created, get the OCID of the secret entry representing the `datasource password` and use that as the value for `oci.secret.id` in application.yaml. There's
+   another commented out approach in [CustomOciSecretConfigSource.java](src/main/java/io/helidon/example/config/vault/CustomOciSecretConfigSource.java)
+   for retrieving the same data which uses the secret name. If this option is the preferred way, fill in parameter values for `oci.secret.name` and `oci.vault.id`.
 2. When authenticating using user principal, make sure to set up user credentials in ~/.oci/config.
 
 

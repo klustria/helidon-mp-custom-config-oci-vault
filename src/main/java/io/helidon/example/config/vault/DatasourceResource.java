@@ -21,7 +21,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
  * Get datasource configuration paramter values:
  * curl -X GET http://localhost:8080/datasource
  *
- * The paramter values are returned as a JSON object.
+ * The parameter values are returned as a JSON object.
  */
 @Path("/datasource")
 public class DatasourceResource {

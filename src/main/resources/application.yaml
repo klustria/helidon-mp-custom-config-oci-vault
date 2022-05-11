@@ -13,3 +13,8 @@ oci:
   secret:
     # Replace this with your Datasource password Secret OCID
     id: ocid1.vaultsecret.oc1.iad.datasourcepassword
+    # Replace this with your Datasource password Secret Name. This is only needed if secrets.getSecretBundleByName() iss used
+    name: database_password
+  vault:
+    # Replace this with your Datasource Vault OCID. This is only needed if secrets.getSecretBundleByName() is used
+    id: ocid1.vault.oc1.iad.datasourcevault

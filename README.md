@@ -7,15 +7,13 @@ This is registered as a service via [src/main/resources/META-INF/services/org.ec
 The rest of the parameters will be retrieved from the regular Config Source which in this case will be data coming from  
 [src/main/resources/application.yaml](src/main/resources/application.yaml).
 
-The custom config source will use the Oci SDK for Vaults/Secrets to retrieve the target data which in this case is the
-password. The parameter for the SDK invocation will be retrieved from the same 
-[src/main/resources/application.yaml](src/main/resources/application.yaml). However, because custom config source cannot
-access the Helidon MP config source, a customized parsing logic of the yaml file was used instead. At the discretion of 
-the user, this can be replaced to use other file format parsing logic and/or can target another file or can be coded 
-to use system environment variable. To disable custom config source, you can either delete 
+The custom config source will use the Oci SDK for Vault/Secrets to retrieve the target data which in this case is the
+password. The parameters for the Oci SDK invocation will be retrieved from the same 
+[src/main/resources/application.yaml](src/main/resources/application.yaml). To disable custom config source, you can either delete 
 [CustomOciSecretConfigSource.java](src/main/java/io/helidon/example/config/vault/CustomOciSecretConfigSource.java)
-or [src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource](src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource)
-and when this happens, the application will go back to retrieving the password from [application.yaml](src/main/resources/application.yaml).
+or [src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource](src/main/resources/META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource).
+Without the custom config source, the application will go back to retrieving the password from the default config source, i.e. 
+[application.yaml](src/main/resources/application.yaml).
 
 
 ## Prerequisites
@@ -32,6 +30,7 @@ and when this happens, the application will go back to retrieving the password f
 
 
 ## System Requirements:
+
 1. JDK 11+
 2. mvn 3.8.3+
 3. Helidon 2.5.0
